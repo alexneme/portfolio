@@ -1,35 +1,44 @@
-<div id="comments">
+<section id="comments">
   <h2>💬 Comments</h2>
 
-  <form action="https://staticman3.herokuapp.com/v3/entry/github/YOUR-USERNAME/YOUR-REPO/main/comments" method="POST">
-    <input type="hidden" name="options[slug]" value="{{ .File.BaseFileName }}">
+  <script
+        src="https://giscus.app/client.js"
+        data-repo="{{ site.Params.giscus.repo }}"
+        data-repo-id="{{ site.Params.giscus.repoId }}"
+        data-category="{{ site.Params.giscus.category }}"
+        data-category-id="{{ site.Params.giscus.categoryId }}"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="dark"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
 
-    <p>
-      <label for="name">Name</label>
-      <input type="text" id="name" name="fields[name]" required>
-    </p>
+  <noscript>Ative o JavaScript para ver os comentários via Giscus.</noscript>
+</section>
 
-    <p>
-      <label for="comment">Comment</label>
-      <textarea id="comment" name="fields[comment]" rows="4" required></textarea>
-    </p>
+<script>
+  (function () {
+    function setGiscusTheme(theme) {
+      const iframe = document.querySelector('iframe.giscus-frame');
+      if (!iframe) return;
+      iframe.contentWindow.postMessage({ giscus: { setConfig: { theme } } }, 'https://giscus.app');
+    }
 
-    <button type="submit">Send</button>
-  </form>
+    const html = document.documentElement;
+    let theme = html.getAttribute('data-theme');
+    if (!theme) {
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    setTimeout(() => setGiscusTheme(theme), 500);
 
-  <hr>
-
-  {{ $slug := .File.BaseFileName }}
-  {{ $comments := (index site.Data.comments $slug) }}
-  {{ if $comments }}
-    {{ range $comments }}
-      <div class="comment">
-        <strong>{{ .name }}</strong>
-        <span>{{ .date | default "" }}</span>
-        <p>{{ .comment }}</p>
-      </div>
-    {{ end }}
-  {{ else }}
-    <p>No comments yet. Be the first!</p>
-  {{ end }}
-</div>
+    document.addEventListener('theme:changed', (e) => {
+      const t = e.detail?.theme === 'dark' ? 'dark' : 'light';
+      setGiscusTheme(t);
+    });
+  })();
+</script>

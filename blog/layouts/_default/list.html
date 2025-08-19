@@ -7,7 +7,6 @@
   <ul class="post-list">
   {{ range .Paginator.Pages }}
     <li class="post-item">
-      <!-- keep the real link for SEO and copy link behavior -->
       <a class="post-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
       {{ if and (not .Date.IsZero) (ne .Type "about") }}
       <div class="muted">{{ .Date.Format "Jan 2, 2006" }}</div>
@@ -28,7 +27,6 @@
 
   {{ template "_internal/pagination.html" . }}
 
-  <!-- Make the whole card clickable unless the click hits an actual link -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       document.querySelectorAll('.post-item').forEach(function(card) {
@@ -36,8 +34,8 @@
         if (!link) return;
         card.style.cursor = 'pointer';
         card.addEventListener('click', function(e) {
-          if (e.target.closest('a')) return; // let tag/title links work normally
-          window.location = link.href;       // otherwise, click anywhere -> open
+          if (e.target.closest('a')) return;
+          window.location = link.href;
         });
       });
     });

@@ -1,7 +1,6 @@
 {{ define "main" }}
 <article class="about">
 
-  <!-- Hero -->
   <header class="about-hero">
     {{ $avatar := or .Params.avatar .Site.Params.author.avatar }}
     {{ if $avatar }}
@@ -13,12 +12,10 @@
     </div>
   </header>
 
-  <!-- Narrative -->
   <div class="content">
     {{ .Content }}
   </div>
 
-  <!-- Skills (supports string or {label, href}) -->
   {{ with .Params.skills }}
   <section class="about-section">
     <h2>{{ i18n "skills" | default "Skills" }}</h2>
@@ -48,7 +45,6 @@
   </section>
   {{ end }}
 
-  <!-- Optional: Now -->
   {{ with .Params.now }}
   <section class="about-section">
     <h2>{{ i18n "now" | default "Now" }}</h2>
@@ -58,7 +54,6 @@
   </section>
   {{ end }}
 
-  <!-- CTA -->
   {{ with .Params.cta }}
   <section class="cta">
     <h2>{{ .title }}</h2>
@@ -73,7 +68,6 @@
 
 </article>
 
-<!-- Minimal styles (safe to remove if you already have equivalents) -->
 <style>
 .about-hero{display:flex;gap:1rem;align-items:center;margin:0 0 1rem}
 .about-avatar{width:84px;height:84px;border-radius:50%;object-fit:cover;border:2px solid rgba(125,125,125,.25)}

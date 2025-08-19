@@ -28,3 +28,10 @@ defaultContentLanguageInSubdir = false
     languageCode = "pt-BR"
     languageName = "Português (Brasil)"
     weight = 2
+
+[params.giscus]
+  repo       = "alexneme/portfolio"
+  repoId     = "R_kgDOPgSzWg"
+  category   = "General"
+  categoryId = "DIC_kwDOPgSzWs4CuVI1"
+  lang       = "pt-BR"
