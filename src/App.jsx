@@ -35,7 +35,7 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen font-sans bg-gradient-to-br from-gray-50 via-neutral-100 to-slate-100 dark:from-gray-900 dark:via-gray-950 dark:to-slate-900 transition-all">
-      {/* Animated BG */}
+      {/* BG */}
       <div
         aria-hidden
         className="pointer-events-none fixed inset-0 z-0 animate-gradient-fade"

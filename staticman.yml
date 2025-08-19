@@ -1,17 +1,15 @@
 comments:
-  allowedFields: ["name", "comment"]
-  branch: "main"
-  commitMessage: "New comment by {fields.name}"
-  filename: "comment-{@timestamp}"
-  format: "yaml"
+  path: "data/comments/{options.slug}"
+  format: "json"
+  filename: "{@timestamp}"
+  extension: "json"
+  moderation: true
   generatedFields:
     date:
       type: date
       options:
         format: iso8601
-  moderation: false
-  path: "data/comments/{options.slug}"
+  allowedFields: ["name", "comment"] 
   requiredFields: ["name", "comment"]
   transforms:
-    name: "trim"
-    comment: "trim"
+    comment: "md"
