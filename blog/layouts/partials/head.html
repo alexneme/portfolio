@@ -1,0 +1,24 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>
+  {{ if .IsHome }}
+    {{ i18n "homeTitle" | default "Home" }}
+  {{ else }}
+    {{ .Title }} · {{ .Site.Title }}
+  {{ end }}
+</title>
+<meta name="description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+<link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" href="{{ .Site.BaseURL }}index.xml">
+<link rel="alternate" hreflang="{{ .Site.Language.Lang }}" href="{{ .Permalink }}">
+{{ range .AllTranslations }}
+<link rel="alternate" hreflang="{{ .Site.Language.Lang }}" href="{{ .Permalink }}">
+{{ end }}
+<link rel="stylesheet" href="/css/site.css">
+<link rel="icon" href="/favicon.svg">
+<script>
+(function () {
+  var pref = localStorage.getItem('theme');
+  if (pref !== 'dark' && pref !== 'light') pref = 'dark';
+  document.documentElement.setAttribute('data-theme', pref);
+})();
+</script>

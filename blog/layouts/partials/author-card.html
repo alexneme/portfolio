@@ -1,0 +1,16 @@
+{{- $a := .Site.Params.author -}}
+<section class="author-card">
+  <img class="author-avatar" src="{{ $a.avatar }}" alt="{{ $a.name }}">
+  <div class="author-meta">
+    <div class="author-name">{{ $a.name }}</div>
+    {{ with $a.role }}<div class="author-role">{{ . }}</div>{{ end }}
+    {{ with $a.location }}<div class="author-location">{{ . }}</div>{{ end }}
+    {{ with $a.bio }}<p class="author-bio">{{ . }}</p>{{ end }}
+    <div class="author-links">
+      {{ with $a.website }}<a href="{{ . }}" rel="me" target="_blank">Website</a>{{ end }}
+      {{ with $a.github }}<a href="https://github.com/{{ . }}" rel="me" target="_blank">GitHub</a>{{ end }}
+      {{ with $a.linkedin }}<a href="https://www.linkedin.com/in/{{ . }}" rel="me" target="_blank">LinkedIn</a>{{ end }}
+      {{ with $a.twitter }}<a href="https://x.com/{{ . }}" rel="me" target="_blank">Twitter</a>{{ end }}
+    </div>
+  </div>
+</section>

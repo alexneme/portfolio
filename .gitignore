@@ -1,0 +1,30 @@
+# Node / Vite artifacts (website app)
+website/node_modules/
+website/dist/
+website/.vite/
+website/.cache/
+website/.eslintcache
+
+# Hugo artifacts (blog)
+blog/public/
+blog/resources/_gen/
+blog/.hugo_build.lock
+
+# Generic
+**/.DS_Store
+**/Thumbs.db
+*.log
+
+# Nginx build output (if any)
+nginx/*.tmp
+
+# Certbot & secrets (keep on server only)
+certbot/conf/
+certbot/live-resolved/
+certbot/www/
+certbot/cloudflare.ini
+
+# Local dev leftovers at repo root (use website/ instead)
+node_modules/
+dist/
+.vite/

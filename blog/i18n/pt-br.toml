@@ -1,0 +1,36 @@
+[home]
+other = "Início"
+
+[about]
+other = "Sobre mim"
+
+[tags]
+other = "Tags"
+
+[rss]
+other = "RSS"
+
+[theme]
+other = "Tema"
+
+[light]
+other = "Claro"
+
+[dark]
+other = "Escuro"
+
+[system]
+other = "Sistema"
+
+[intro]
+other = "Escrevo sobre tecnologias em geral."
+
+[readingTime]
+one = "1 min de leitura"
+other = "{{ .Count }} mins de leitura"
+
+[footer_rights]
+other = "Todos os direitos reservados."
+
+[homeTitle]
+other = "Início · BlogOps | Learning Everyday"

@@ -1,0 +1,30 @@
+baseURL = "https://blog.neme.site/"
+title = "BlogOps | Learning Everyday"
+paginate = 10
+
+[params.author]
+  name = "Alex Neme"
+  role = "Cloud/DevOps Engineer"
+  location = "Brazil"
+  bio = "Automation, observability, and pipeline builder."
+  avatar = "/images/avatar.jpg"
+  github = "alexneme"
+  linkedin = "alexneme"
+  website = "https://blog.neme.site/"
+
+
+[outputs]
+  home = ["HTML","RSS"]
+
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+
+[languages]
+  [languages.en]
+    languageCode = "en"
+    languageName = "English"
+    weight = 1
+  [languages."pt-br"]
+    languageCode = "pt-BR"
+    languageName = "Português (Brasil)"
+    weight = 2

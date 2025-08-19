@@ -1,0 +1,88 @@
+{{ define "main" }}
+<article class="about">
+
+  <!-- Hero -->
+  <header class="about-hero">
+    {{ $avatar := or .Params.avatar .Site.Params.author.avatar }}
+    {{ if $avatar }}
+      <img class="about-avatar" src="{{ $avatar }}" alt="{{ .Title }}">
+    {{ end }}
+    <div>
+      <h1 class="title">{{ .Title }}</h1>
+      {{ with .Params.subtitle }}<p class="lead">{{ . }}</p>{{ end }}
+    </div>
+  </header>
+
+  <!-- Narrative -->
+  <div class="content">
+    {{ .Content }}
+  </div>
+
+  <!-- Skills (supports string or {label, href}) -->
+  {{ with .Params.skills }}
+  <section class="about-section">
+    <h2>{{ i18n "skills" | default "Skills" }}</h2>
+
+    {{ range $group, $items := . }}
+      <div class="skill-col">
+        <h3 class="skill-group">{{ $group | title}}</h3>
+        <div class="chips">
+          {{ range $items }}
+            {{/* detect if item is a map or a string */}}
+            {{ $type := printf "%T" . }}
+            {{ if eq $type "string" }}
+              <span class="chip">{{ . }}</span>
+            {{ else }}
+              {{ $label := (index . "label" | default (index . "name")) }}
+              {{ $href  := (index . "href") }}
+              {{ if $href }}
+                <a class="chip chip-link" href="{{ $href }}" target="_blank" rel="noopener">{{ $label }}</a>
+              {{ else }}
+                <span class="chip">{{ $label }}</span>
+              {{ end }}
+            {{ end }}
+          {{ end }}
+        </div>
+      </div>
+    {{ end }}
+  </section>
+  {{ end }}
+
+  <!-- Optional: Now -->
+  {{ with .Params.now }}
+  <section class="about-section">
+    <h2>{{ i18n "now" | default "Now" }}</h2>
+    <ul class="now-list">
+      {{ range . }}<li>{{ . }}</li>{{ end }}
+    </ul>
+  </section>
+  {{ end }}
+
+  <!-- CTA -->
+  {{ with .Params.cta }}
+  <section class="cta">
+    <h2>{{ .title }}</h2>
+    {{ with .subtitle }}<p>{{ . }}</p>{{ end }}
+    <div class="cta-actions">
+      {{ range .actions }}
+        <a class="btn" href="{{ .href }}" {{ with .target }}target="{{ . }}"{{ end }}>{{ .label }}</a>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+</article>
+
+<!-- Minimal styles (safe to remove if you already have equivalents) -->
+<style>
+.about-hero{display:flex;gap:1rem;align-items:center;margin:0 0 1rem}
+.about-avatar{width:84px;height:84px;border-radius:50%;object-fit:cover;border:2px solid rgba(125,125,125,.25)}
+.skills-grid{display:grid;gap:1rem}
+.skill-col{margin:.5rem 0}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.chip{display:inline-block;padding:.4rem .75rem;border-radius:999px;border:1px solid rgba(125,125,125,.25);background:rgba(125,125,125,.08)}
+.chip-link{text-decoration:none}
+.chip-link:hover{text-decoration:underline}
+.now-list{margin:.5rem 0 0 1rem}
+</style>
+{{ end }}

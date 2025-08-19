@@ -1,0 +1,69 @@
+stages: [build, deploy]
+
+variables:
+  IMAGE_NAME: $CI_REGISTRY_IMAGE
+  BLOG_BASEURL: "https://blog.neme.site/"
+  TARGET_PLATFORM: "linux/arm64"
+
+build-image:
+  stage: build
+  image: docker:24.0.9
+  services:
+    - docker:24.0.9-dind
+  variables:
+    DOCKER_BUILDKIT: "1"
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    - docker buildx create --use || true
+  script:
+    - |
+      if [ -n "$CI_COMMIT_TAG" ]; then
+        docker buildx build \
+          --platform "$TARGET_PLATFORM" \
+          --build-arg BLOG_BASEURL="${BLOG_BASEURL}" \
+          -t $IMAGE_NAME:$CI_COMMIT_TAG -t $IMAGE_NAME:latest \
+          --push .
+      else
+        docker buildx build \
+          --platform "$TARGET_PLATFORM" \
+          --build-arg BLOG_BASEURL="${BLOG_BASEURL}" \
+          -t $IMAGE_NAME:latest \
+          --push .
+      fi
+  only:
+    - main
+    - tags
+
+deploy:
+  stage: deploy
+  image: alpine:3.20
+  needs: ["build-image"]
+  variables:
+    SSH_DIR: "$HOME/.ssh"
+    SSH_KEY_PATH: "$SSH_DIR/id_ed25519"
+    SSH_PORT: "2222"
+    DEPLOY_HOST: "168.138.231.34"
+    DEPLOY_USER: "ubuntu"
+    DEPLOY_PATH: "/home/ubuntu/portfolio"
+  before_script:
+    - apk add --no-cache openssh
+    - mkdir -p "$SSH_DIR"
+    - echo "$DEPLOY_PRIVATE_KEY_B64" | base64 -d > "$SSH_KEY_PATH"
+    - chmod 600 "$SSH_KEY_PATH"
+    - ssh-keyscan -T 5 -p $SSH_PORT $DEPLOY_HOST 2>/dev/null >> "$SSH_DIR/known_hosts" || true
+  script:
+    - |
+      PORT="$SSH_PORT"
+      ssh -o StrictHostKeyChecking=no -p "$PORT" -i "$SSH_KEY_PATH" ${DEPLOY_USER}@${DEPLOY_HOST}
+      echo "Using SSH port $PORT"
+
+      ssh -o StrictHostKeyChecking=no -p "$PORT" -i "$SSH_KEY_PATH" ${DEPLOY_USER}@${DEPLOY_HOST} '
+        set -e
+        cd '"$DEPLOY_PATH"' &&
+        git pull || true &&
+        docker compose pull nginx &&
+        docker compose up -d nginx --force-recreate &&
+        docker image prune -f
+      '
+  only:
+    - tags

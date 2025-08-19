@@ -1,0 +1,35 @@
+<div id="comments">
+  <h2>💬 Comments</h2>
+
+  <form action="https://staticman3.herokuapp.com/v3/entry/github/YOUR-USERNAME/YOUR-REPO/main/comments" method="POST">
+    <input type="hidden" name="options[slug]" value="{{ .File.BaseFileName }}">
+
+    <p>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="fields[name]" required>
+    </p>
+
+    <p>
+      <label for="comment">Comment</label>
+      <textarea id="comment" name="fields[comment]" rows="4" required></textarea>
+    </p>
+
+    <button type="submit">Send</button>
+  </form>
+
+  <hr>
+
+  {{ $slug := .File.BaseFileName }}
+  {{ $comments := (index site.Data.comments $slug) }}
+  {{ if $comments }}
+    {{ range $comments }}
+      <div class="comment">
+        <strong>{{ .name }}</strong>
+        <span>{{ .date | default "" }}</span>
+        <p>{{ .comment }}</p>
+      </div>
+    {{ end }}
+  {{ else }}
+    <p>No comments yet. Be the first!</p>
+  {{ end }}
+</div>

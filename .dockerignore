@@ -1,0 +1,30 @@
+# Git
+.git
+.gitignore
+
+# Node / Vite
+website/node_modules
+website/dist
+website/.vite
+website/.cache
+
+# Hugo generated
+blog/public
+blog/resources/_gen
+blog/.hugo_build.lock
+
+# Certs & secrets (never send to the build context)
+certbot/conf
+certbot/live-resolved
+certbot/www
+certbot/cloudflare.ini
+
+# Local root junk (you already use website/)
+node_modules
+dist
+.vite
+
+# Misc
+**/.DS_Store
+**/Thumbs.db
+*.log

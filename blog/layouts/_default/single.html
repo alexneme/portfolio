@@ -1,0 +1,21 @@
+{{ define "main" }}
+<article class="post">
+  <h1 class="title">{{ .Title }}</h1>
+
+  <p class="muted">
+    {{ .Date.Format "02 Jan 2006" }} ·
+    {{ $m := .ReadingTime }}
+    {{ if eq .Site.Language.Lang "pt-br" }}{{ $m }} min de leitura{{ else }}{{ $m }} min read{{ end }}
+    {{ with .Params.tags }} ·
+      {{ range $i, $t := . }}{{ if $i }}, {{ end }}<a class="tag" href="{{ "tags/" | relLangURL }}{{ $t | urlize }}">{{ $t }}</a>{{ end }}
+    {{ end }}
+  </p>
+
+  <div class="content post">
+    {{ .Content }}
+  </div>
+
+  {{ partial "author-card.html" . }}
+  {{ partial "comments.html" . }}
+</article>
+{{ end }}
