@@ -1,0 +1,14 @@
+{{ $src   := .Destination }}
+{{ $alt   := .Text | safeHTML }}
+{{ $title := .Title }}
+<figure>
+  <img
+    src="{{ $src }}"
+    alt="{{ $alt }}"
+    {{ with $title }}title="{{ . }}"{{ end }}
+    loading="lazy"
+    decoding="async"
+    style="max-width:100%;height:auto"
+  />
+  {{ with $title }}<figcaption>{{ . }}</figcaption>{{ end }}
+</figure>

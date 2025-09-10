@@ -1,0 +1,76 @@
+/* 1) Make code blocks self-contained and scroll horizontally if needed */
+.highlight,
+.chroma,
+pre {
+  display: block;         /* avoid inline/flex quirks */
+  overflow: auto;         /* allow scroll instead of breaking layout */
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 1rem;          /* ensures background wraps content nicely */
+  border-radius: 12px;    /* keep your rounded “square” */
+}
+
+/* 2) Don’t clip long lines / allow wrapping if you prefer (pick ONE of these) */
+/* Option A: keep original formatting + horizontal scroll (recommended) */
+pre, code { white-space: pre; }
+
+/* Option B: wrap long lines (comment A out and use this if you hate scrolling) */
+/* pre, code { white-space: pre-wrap; word-break: break-word; } */
+
+/* 3) Some themes draw a decorative background with ::before and a fixed height */
+.highlight::before,
+.chroma::before {
+  content: none;  /* remove pseudo that can cause the “box” to be too short */
+}
+
+/* 4) If your post content uses flex, let the code block shrink properly */
+.prose pre,
+.content pre {
+  min-width: 0;     /* prevents flex overflow clipping */
+}
+
+/* 5) Safety: never set a fixed height on code containers */
+.highlight, .chroma, pre { height: auto !important; }
+
+/* 6) Optional: ensure consistent background if theme relies on parent only */
+.highlight, .chroma {
+  background: var(--code-bg, #0e121b);
+}
+/* 1) Make code blocks self-contained and scroll horizontally if needed */
+.highlight,
+.chroma,
+pre {
+  display: block;         /* avoid inline/flex quirks */
+  overflow: auto;         /* allow scroll instead of breaking layout */
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 1rem;          /* ensures background wraps content nicely */
+  border-radius: 12px;    /* keep your rounded “square” */
+}
+
+/* 2) Don’t clip long lines / allow wrapping if you prefer (pick ONE of these) */
+/* Option A: keep original formatting + horizontal scroll (recommended) */
+pre, code { white-space: pre; }
+
+/* Option B: wrap long lines (comment A out and use this if you hate scrolling) */
+/* pre, code { white-space: pre-wrap; word-break: break-word; } */
+
+/* 3) Some themes draw a decorative background with ::before and a fixed height */
+.highlight::before,
+.chroma::before {
+  content: none;  /* remove pseudo that can cause the “box” to be too short */
+}
+
+/* 4) If your post content uses flex, let the code block shrink properly */
+.prose pre,
+.content pre {
+  min-width: 0;     /* prevents flex overflow clipping */
+}
+
+/* 5) Safety: never set a fixed height on code containers */
+.highlight, .chroma, pre { height: auto !important; }
+
+/* 6) Optional: ensure consistent background if theme relies on parent only */
+.highlight, .chroma {
+  background: var(--code-bg, #0e121b);
+}
