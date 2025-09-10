@@ -2,7 +2,7 @@
 other = "Home"
 
 [about]
-other = "About me"
+other = "About"
 
 [tags]
 other = "Tags"
@@ -33,4 +33,4 @@ other = "{{ .Count }} min read"
 other = "All rights reserved."
 
 [homeTitle]
-other = "Home · BlogOps | Learning Everyday"
+other = "Home · Learning Everyday"

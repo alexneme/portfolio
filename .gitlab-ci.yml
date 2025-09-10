@@ -31,7 +31,6 @@ build-image:
           --push .
       fi
   only:
-    - main
     - tags
 
 deploy:

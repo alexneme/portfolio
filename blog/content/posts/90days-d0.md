@@ -1,15 +1,16 @@
 ---
-title: "My Journey Ahead"
-description: "90DaysOfDevOps Day 0 - The Beginning"
+title: "DevOps Journey"
+description: "90DaysOfDevOps Day 0 — The Beginning"
 date: 2025-08-19
-tags: ["devops", "roadmap", "90daysdevops", "learning"]
+author: "alex"
+tags: ["90daysdevops", "day-0"]
 draft: false
 ---
 
 ![90DaysOfDevOps Logo](/images/90days.png)
 
 
-I decided to take on the **90DaysOfDevOps** challenge, and I’ll be sharing ~~me struggling~~ my learning journey with you all here on the blog in a fun way! 🚀  
+I decided to take on the **90DaysOfDevOps** challenge, and I’ll be sharing ~~me struggling~~ my learning journey with you all here on the blog in a fun way!  
 
 I work with DevOps and, honestly, this field feels infinite: Linux, networking, containers, Kubernetes, Terraform, monitoring, security… and there’s always something new popping up. That’s what makes me ~~desperate~~ excited, but it can also be pretty challenging.  
 
@@ -25,7 +26,7 @@ I’ll follow the [official 90DaysOfDevOps roadmap](https://github.com/MichaelCa
 ## What’s coming?  
 We’ll go through topics like:  
 - What DevOps really is (and why it matters).  
-- A bit of Go (~~struggle along with me~~).  
+- A bit of Go Lang (~~struggle along with me~~).  
 - Linux tricks that make life easier.  
 - Networking without being boring (I promise).  
 - Cloud (I’ll use Azure, but it’s mostly about the concepts).  
@@ -42,4 +43,4 @@ We’ll go through topics like:
 ## To wrap it up  
 I’m not here to play teacher, I just want to share my learning process and learn from you too!  
 
-Tomorrow we kick off with **Day 1: What is DevOps and why should we care?** 🤘  
+Tomorrow we kick off with **Day 1: What is DevOps and why should we care?** 

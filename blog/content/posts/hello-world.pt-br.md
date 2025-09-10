@@ -1,8 +1,9 @@
 ---
-title: "Olá, Mundo"
+title: Olá, Mundo
 date: 2025-08-16
-description: "Por que estou começando este blog"
-tags: ["inicio", "90DiasDeDevOps"]
+description: Por que estou começando este blog
+author: alex
+tags: ["inicio", "90daysdevops"]
 draft: false
 ---
 

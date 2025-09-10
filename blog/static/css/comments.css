@@ -1,212 +1,85 @@
-
+/* Comment section container */
 #comments {
-  margin-top: 2rem;
-  padding: 1rem 0;
+  margin-top: 3rem;
+  padding: 1.5rem;
+  border-top: 2px solid #eee;
 }
 
+/* Title */
 #comments h2 {
-  margin: 0 0 1rem 0;
-  font-size: 1.25rem;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: #333;
 }
 
+/* Form */
 #comments form {
-  display: grid;
-  gap: 0.75rem;
-  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
-#comments form p {
-  display: grid;
-  gap: 0.25rem;
-  margin: 0;
-}
-
+/* Labels */
 #comments label {
   font-weight: 600;
-  font-size: 0.95rem;
+  display: block;
+  margin-bottom: 0.25rem;
+  color: #444;
 }
 
+/* Inputs & Textarea */
 #comments input[type="text"],
 #comments textarea {
   width: 100%;
-  border: 1px solid;
-  border-radius: 0.5rem;
-  padding: 0.6rem 0.75rem;
-  background: transparent;
-  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease-in-out;
 }
 
-#comments textarea {
-  resize: vertical;
-  min-height: 120px;
+#comments input[type="text"]:focus,
+#comments textarea:focus {
+  border-color: #007bff;
+  outline: none;
 }
 
-#comments button[type="submit"] {
-  width: fit-content;
-  border: 1px solid;
-  border-radius: 0.5rem;
-  padding: 0.55rem 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.05s ease-in-out;
-}
-
-#comments button[type="submit"]:active {
-  transform: translateY(1px);
-}
-
-#comments hr {
-  margin: 1rem 0 1.25rem;
+/* Button */
+#comments button {
+  align-self: flex-start;
+  background: #007bff;
+  color: #fff;
   border: none;
-  height: 1px;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.2s ease-in-out;
+}
+
+#comments button:hover {
+  background: #0056b3;
 }
 
 /* Comment list */
 #comments .comment {
-  border: 1px solid;
-  border-radius: 0.75rem;
-  padding: 0.75rem 1rem;
-  margin: 0 0 0.75rem 0;
+  margin-bottom: 1.5rem;
+  padding: 0.8rem 1rem;
+  border-left: 3px solid #007bff;
+  background: #f9f9f9;
+  border-radius: 4px;
 }
 
 #comments .comment strong {
-  font-weight: 700;
+  color: #222;
+  display: block;
+  margin-bottom: 0.3rem;
 }
 
-#comments .comment span {
-  font-size: 0.9rem;
-  opacity: 0.8;
-  margin-left: 0.25rem;
-}
-
-/* -------------------------------------------
-   Light theme
-------------------------------------------- */
-:root,
-html[data-theme="light"] {
-  --c-bg: #ffffff;
-  --c-text: #0f172a;     /* slate-900 */
-  --c-muted: #475569;    /* slate-600 */
-  --c-border: #e2e8f0;   /* slate-200 */
-  --c-border-strong: #cbd5e1; /* slate-300 */
-  --c-input-bg: #ffffff;
-  --c-input-border: #cbd5e1;
-  --c-input-focus: #2563eb;   /* blue-600 */
-  --c-hr: #e5e7eb;
-  --c-card-bg: #ffffff;
-  --c-button-bg: #0f172a;     /* slate-900 */
-  --c-button-fg: #ffffff;
-  --c-button-hover-bg: #111827;  /* gray-900 */
-  --c-button-border: #0f172a;
-}
-
-/* Apply light tokens */
-html:not([data-theme]), html[data-theme="light"] body {
-  color: var(--c-text);
-  background: var(--c-bg);
-}
-html:not([data-theme]), html[data-theme="light"] #comments label { color: var(--c-muted); }
-html:not([data-theme]), html[data-theme="light"] #comments input[type="text"],
-html:not([data-theme]), html[data-theme="light"] #comments textarea {
-  color: var(--c-text);
-  background: var(--c-input-bg);
-  border-color: var(--c-input-border);
-}
-html:not([data-theme]), html[data-theme="light"] #comments input[type="text"]:focus,
-html:not([data-theme]), html[data-theme="light"] #comments textarea:focus {
-  outline: none;
-  border-color: var(--c-input-focus);
-  box-shadow: 0 0 0 3px color-mix(in oklab, var(--c-input-focus) 20%, transparent);
-}
-html:not([data-theme]), html[data-theme="light"] #comments button[type="submit"] {
-  color: var(--c-button-fg);
-  background: var(--c-button-bg);
-  border-color: var(--c-button-border);
-}
-html:not([data-theme]), html[data-theme="light"] #comments button[type="submit"]:hover {
-  background: var(--c-button-hover-bg);
-}
-html:not([data-theme]), html[data-theme="light"] #comments hr { background: var(--c-hr); }
-html:not([data-theme]), html[data-theme="light"] #comments .comment {
-  background: var(--c-card-bg);
-  border-color: var(--c-border);
-}
-
-/* -------------------------------------------
-   Dark theme
-------------------------------------------- */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) {
-    --c-bg: #0b1220;          /* near slate-950 but less green */
-    --c-text: #e5e7eb;        /* slate-200 */
-    --c-muted: #94a3b8;       /* slate-400 */
-    --c-border: #1f2937;      /* slate-800 */
-    --c-border-strong: #374151;/* slate-700 */
-    --c-input-bg: #0f172a;    /* slate-900 */
-    --c-input-border: #334155; /* slate-700 */
-    --c-input-focus: #38bdf8; /* sky-400 */
-    --c-hr: #1f2937;
-    --c-card-bg: #0f172a;
-    --c-button-bg: #111827;   /* gray-900 */
-    --c-button-fg: #f8fafc;   /* slate-50 */
-    --c-button-hover-bg: #1f2937; /* gray-800 */
-    --c-button-border: #374151;
-  }
-}
-
-html[data-theme="dark"] {
-  --c-bg: #0b1220;
-  --c-text: #e5e7eb;
-  --c-muted: #94a3b8;
-  --c-border: #1f2937;
-  --c-border-strong: #374151;
-  --c-input-bg: #0f172a;
-  --c-input-border: #334155;
-  --c-input-focus: #38bdf8;
-  --c-hr: #1f2937;
-  --c-card-bg: #0f172a;
-  --c-button-bg: #111827;
-  --c-button-fg: #f8fafc;
-  --c-button-hover-bg: #1f2937;
-  --c-button-border: #374151;
-}
-
-/* Apply dark tokens when dark */
-html[data-theme="dark"] body { color: var(--c-text); background: var(--c-bg); }
-html[data-theme="dark"] #comments label { color: var(--c-muted); }
-
-html[data-theme="dark"] #comments input[type="text"],
-html[data-theme="dark"] #comments textarea {
-  color: var(--c-text);
-  background: var(--c-input-bg);
-  border-color: var(--c-input-border);
-}
-
-html[data-theme="dark"] #comments input[type="text"]::placeholder,
-html[data-theme="dark"] #comments textarea::placeholder {
-  color: color-mix(in oklab, var(--c-muted) 70%, transparent);
-}
-
-html[data-theme="dark"] #comments input[type="text"]:focus,
-html[data-theme="dark"] #comments textarea:focus {
-  outline: none;
-  border-color: var(--c-input-focus);
-  box-shadow: 0 0 0 3px color-mix(in oklab, var(--c-input-focus) 25%, transparent);
-}
-
-html[data-theme="dark"] #comments button[type="submit"] {
-  color: var(--c-button-fg);
-  background: var(--c-button-bg);
-  border-color: var(--c-button-border);
-}
-
-html[data-theme="dark"] #comments button[type="submit"]:hover {
-  background: var(--c-button-hover-bg);
-}
-
-html[data-theme="dark"] #comments hr { background: var(--c-hr); }
-
-html[data-theme="dark"] #comments .comment {
-  background: var(--c-card-bg);
-  border-color: var(--c-border-strong);
+/* Ensure giscus iframe has room */
+.giscus, .giscus-frame {
+  display: block !important;
+  width: 100%;
+  min-height: 240px; /* prevents momentary collapse while loading */
 }

@@ -1,16 +1,25 @@
 baseURL = "https://blog.neme.site/"
-title = "BlogOps | Learning Everyday"
+title = "Learning Everyday"
 paginate = 10
 
-[params.author]
+[params.authors.alex]
   name = "Alex Neme"
-  role = "Cloud/DevOps Engineer"
+  role = "Data Engineer"
   location = "Brazil"
   bio = "Automation, observability, and pipeline builder."
-  avatar = "/images/avatar.jpg"
+  avatar = "/images/avatar-alex.jpg"
+  website = "https://neme.site"
   github = "alexneme"
   linkedin = "alexneme"
-  website = "https://blog.neme.site/"
+
+[params.authors.enriq]
+  name = "Enrique de Andrade Castro"
+  avatar = "/images/avatar-enriq.jpg"
+  role = "IT Infrastructure | Network Security | Linux | Zabbix | FortiGate"
+  location = "Brazil"
+  bio = "IT Infrastructure Analyst"
+  github = "Enriq4472"
+  linkedin = "enrique-de-andrade-castro"
 
 
 [outputs]
@@ -34,4 +43,15 @@ defaultContentLanguageInSubdir = false
   repoId     = "R_kgDOPgSzWg"
   category   = "General"
   categoryId = "DIC_kwDOPgSzWs4CuVI1"
-  lang       = "pt-BR"
+  lang       = "en"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+    [markup.goldmark.parser.attribute]
+      block = true
+      title = true
+
+baseURL = "https://blog.neme.site/"
+canonifyURLs = true

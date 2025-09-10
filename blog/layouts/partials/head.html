@@ -8,17 +8,33 @@
   {{ end }}
 </title>
 <meta name="description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+
+<meta property="og:title" content="{{ .Title }}" />
+<meta property="og:description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="{{ .Permalink }}" />
+{{ with .Params.image }}
+<meta property="og:image" content="{{ . | absURL }}" />
+{{ else }}
+<meta property="og:image" content="{{ "images/default-thumb.jpg" | absURL }}" />
+{{ end }}
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="{{ .Title }}" />
+<meta name="twitter:description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
+{{ with .Params.image }}
+<meta name="twitter:image" content="{{ . | absURL }}" />
+{{ else }}
+<meta name="twitter:image" content="{{ "images/default-thumb.jpg" | absURL }}" />
+{{ end }}
+
 <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" href="{{ .Site.BaseURL }}index.xml">
-<link rel="alternate" hreflang="{{ .Site.Language.Lang }}" href="{{ .Permalink }}">
 {{ range .AllTranslations }}
 <link rel="alternate" hreflang="{{ .Site.Language.Lang }}" href="{{ .Permalink }}">
 {{ end }}
 <link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/comments.css">
+<link rel="stylesheet" href="/css/custom.css">
+<link rel="canonical" href="{{ .Permalink }}">
 <link rel="icon" href="/favicon.svg">
-<script>
-(function () {
-  var pref = localStorage.getItem('theme');
-  if (pref !== 'dark' && pref !== 'light') pref = 'dark';
-  document.documentElement.setAttribute('data-theme', pref);
-})();
-</script>
+<script> (function () { var pref = localStorage.getItem('theme'); if (pref !== 'dark' && pref !== 'light') pref = 'dark'; document.documentElement.setAttribute('data-theme', pref); })(); </script>

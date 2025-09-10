@@ -9,7 +9,6 @@
       <a href="{{ "index.xml" | relLangURL }}">{{ i18n "rss" }}</a>
 
       <div class="actions">
-        {{/* --- Language TOGGLE (single button) --- */}}
         {{ $cur := .Site.Language.Lang }}
         {{ $target := "pt-br" }}{{ if eq $cur "pt-br" }}{{ $target = "en" }}{{ end }}
 

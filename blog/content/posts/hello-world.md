@@ -1,8 +1,9 @@
 ---
-title: "Hello, World"
+title: Hello, World
 date: 2025-08-16
-description: "Why I’m starting this blog"
-tags: ["quick-start", "90DaysOfDevOps"]
+description: Why I’m starting this blog
+author: alex
+tags: ["quick-start", "90daysdevops"]
 draft: false
 ---
 

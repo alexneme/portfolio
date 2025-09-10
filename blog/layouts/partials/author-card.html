@@ -1,4 +1,18 @@
-{{- $a := .Site.Params.author -}}
+{{/* Resolve author data: page object > page key > site default */}}
+{{ $a := .Site.Params.author }}
+{{ with .Params.author }}
+  {{ $t := printf "%T" . }}
+  {{ if eq $t "map[string]interface {}" }}
+    {{/* author is an object in the post front matter */}}
+    {{ $a = . }}
+  {{ else }}
+    {{/* author is a key (string) → lookup in site params */}}
+    {{ with (index $.Site.Params.authors .) }}
+      {{ $a = . }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
 <section class="author-card">
   <img class="author-avatar" src="{{ $a.avatar }}" alt="{{ $a.name }}">
   <div class="author-meta">
@@ -9,8 +23,7 @@
     <div class="author-links">
       {{ with $a.website }}<a href="{{ . }}" rel="me" target="_blank">Website</a>{{ end }}
       {{ with $a.github }}<a href="https://github.com/{{ . }}" rel="me" target="_blank">GitHub</a>{{ end }}
-      {{ with $a.linkedin }}<a href="https://www.linkedin.com/in/{{ . }}" rel="me" target="_blank">LinkedIn</a>{{ end }}
-      {{ with $a.twitter }}<a href="https://x.com/{{ . }}" rel="me" target="_blank">Twitter</a>{{ end }}
+      {{ with $a.linkedin }}<a href="https://linkedin.com/in/{{ . }}" rel="me" target="_blank">LinkedIn</a>{{ end }}
     </div>
   </div>
 </section>

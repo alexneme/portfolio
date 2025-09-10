@@ -1,3 +1,3 @@
 ---
-title: "Bem-vindo! Pegue um café e fique à vontade."
+title: "Chega junto, pega um café e fica a vontade."
 ---

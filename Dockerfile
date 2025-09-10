@@ -4,7 +4,6 @@ COPY blog/ /src/
 ARG BLOG_BASEURL=https://blog.neme.site/
 RUN hugo --minify --baseURL="${BLOG_BASEURL}"
 
-
 FROM node:24-alpine AS web_build
 WORKDIR /app
 COPY website/package*.json ./

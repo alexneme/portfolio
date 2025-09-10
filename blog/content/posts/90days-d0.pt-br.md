@@ -1,15 +1,16 @@
 ---
-title: "Minha Jornada"
-description: "90DaysOfDevOps Dia 0 - O Começo"
+title: "Jornada DevOps"
+description: "90DaysOfDevOps Dia 0 — O Começo"
 date: 2025-08-19
-tags: ["devops", "roadmap", "90daysdevops", "aprendizado"]
+author: "alex"
+tags: ["90daysdevops", "dia-0"]
 draft: false
 ---
 
 ![90DaysOfDevOps]( /images/90days.png )
 
 
-Resolvi encarar o desafio **90DaysOfDevOps** e vou compartilhar ~~eu apanhando~~ meu aprendizado tudo com vocês aqui no blog de uma maneira mais divertida! 🚀  
+Resolvi encarar o desafio **90DaysOfDevOps** e vou compartilhar ~~eu apanhando~~ meu aprendizado tudo com vocês aqui no blog de uma maneira mais divertida! 
 
 Trabalho com DevOps e, sinceramente, essa área parece infinita: Linux, redes, containers, Kubernetes, Terraform, monitoramento, segurança… e ainda sempre aparece coisa nova. Isso é o que mais me deixa ~~desesperado~~ feliz, mas também pode desafiador.
 
@@ -25,7 +26,7 @@ Vou seguir o [roadmap oficial do 90DaysOfDevOps](https://github.com/MichaelCade/
 ## Trazer o que?
 A gente vai passar por temas como:  
 - O que é DevOps de verdade (e porque isso importa).  
-- Um pouco de Go (~~apanhe comigo~~).
+- Um pouco de Go Lang (~~apanhe comigo~~).
 - Truques de Linux que facilitam a vida.  
 - Networking sem ser chato (juro).  
 - Cloud (vou utilizar Azure, mas é basicamente o conceito).  
@@ -42,4 +43,4 @@ A gente vai passar por temas como:
 ## Pra fechar
 Não quero ser professor aqui, só quero dividir meu aprendizado e aprender com vocês, também!
 
-Amanhã começamos com o **Dia 1: O que é DevOps e por que a gente se importa com isso?** 🤘
+Amanhã começamos com o **Dia 1: O que é DevOps e por que a gente se importa com isso?** 
